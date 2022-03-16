@@ -1,0 +1,30 @@
+{
+  "horusecCliEnableCommitAuthor": true,
+  "horusecCliEnableInformationSeverity": true,
+  "horusecCliEnableOwaspDependencyCheck": true,
+  "horusecCliFalsePositiveHashes": [
+    "53adbd65ddf1297d4957989415dade590b074dfceada6ce0adb4ec7c22c8f8da",
+    "5e3e74c279bbcc3559bd6ce6961d29ec045492cd22a5e78970abfc16688a6351",
+    "7c1009372c8769ee3bda38f8dda48d61f5fd615bbf7bf7270ac9121990887179",
+    "8185b6c987e5766d997300443a413cd34f35de68f633374ba240733305a30779",
+    "925883ef3ad5df196139b1b9f8ed00b793cd204ef0a81d54960ef27faa25ce55",
+    "d1a2195a724fd14e0fff355f2e767c42848c98b8774de36d5010b87728b7c675",
+    "d31d64086359cca4f24e5892faecb391a5f822f2959fa4a4e127723ba0f130f8",
+    "171ce6e884c537c0b4c0059660c505e72eaa288c09119532d2cf033739fddeb8",
+    "7853366248afc50fe66c8d00cf742e77fcb64da008a3496a8cbba2e52cab7b07"
+  ],
+  "horusecCliFilesOrPathsToIgnore": [
+    "**/.tox/**",
+    "**/.vscode/**",
+    "**/*.env",
+    "**/.mypy_cache/**",
+    "**/tests/**",
+    "**/venv/**"
+  ],
+  "horusecCliReturnErrorIfFoundVulnerability": true,
+  "horusecCliToolsConfig": {
+    "Bandit": {
+      "istoignore": true
+    }
+  }
+}

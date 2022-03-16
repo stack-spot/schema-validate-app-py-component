@@ -1,0 +1,6 @@
+schema_validate:
+  region: <region>
+  name: <name>
+  registry: <registry>
+  api_id: <api_id>
+  type: <low/medium/high>

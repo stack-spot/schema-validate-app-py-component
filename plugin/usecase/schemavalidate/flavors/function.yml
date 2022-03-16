@@ -1,0 +1,46 @@
+flavors:
+  low: #100RPS
+    function:
+      memory: 1058
+      time-limit: 60
+    dynamo:
+      read:
+        auto-scaling: True
+        maximum: 150
+        minimum: 25
+        percentage: 70
+      write:
+        auto-scaling: True
+        maximum: 10
+        minimum: 1
+        percentage: 70
+  medium: #500RPS
+    function:
+      memory: 1536
+      time-limit: 60
+    dynamo:
+      read:
+        auto-scaling: True
+        maximum: 750
+        minimum: 125
+        percentage: 70
+      write:
+        auto-scaling: True
+        maximum: 10
+        minimum: 1
+        percentage: 70
+  high: #1000RPS
+    function:
+      memory: 3008
+      time-limit: 60
+    dynamo:
+      read:
+        auto-scaling: True
+        maximum: 1500
+        minimum: 250
+        percentage: 70
+      write:
+        auto-scaling: True
+        maximum: 10
+        minimum: 1
+        percentage: 70
