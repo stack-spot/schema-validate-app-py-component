@@ -14,11 +14,11 @@ class SchemaValidate:
     region: str
     registry: str
     type: str
-    api_id: str
+    api_name: str
 
     def __post_init__(self):
         val_.checking_vars_type(
-                self, name='str', region='str', type='str', registry='str', api_id='str')
+                self, name='str', region='str', type='str', registry='str', api_name='str')
         val_.checking_the_type(self)
 
 

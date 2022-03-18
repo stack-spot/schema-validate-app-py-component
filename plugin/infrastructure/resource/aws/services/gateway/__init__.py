@@ -17,5 +17,5 @@ class ApiGateway:
 
 
     @staticmethod
-    def get_api_resource_id(api_id: str, name: str, region: str) -> dict: 
-        return ApiGatewayService(region).get_api_resource_id(api_id, name)
+    def get_api_resource_id(api_name: str, name: str, region: str) -> dict: 
+        return ApiGatewayService(region).get_api_resource_id(api_name, name)

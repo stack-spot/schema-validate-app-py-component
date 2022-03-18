@@ -31,7 +31,7 @@ A Data Schema Validation plugin is a set of subcomponents that create an environ
       region: <region> # ----------------- (string) --- [REQUIRED]
       name: <name> # ----------------- (string) --- [REQUIRED]
       registry: <registry> # ----------------- (string) --- [REQUIRED]
-      api_id: <api_id> # ----------------- (string) --- [REQUIRED]
+      api_name: <api_name> # ----------------- (string) --- [REQUIRED]
       type: <low/medium/high> # ----------------- (string) --- [REQUIRED]
 
   ```

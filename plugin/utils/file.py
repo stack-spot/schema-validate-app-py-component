@@ -47,9 +47,9 @@ def create_lambda_package(folder: str, output_zip: str):
 
     out_dir = get_current_pwd()
 
-    remove_from_os(f"{out_dir}/{folder}/{output_zip}")
+    remove_from_os(f"{out_dir}/{output_zip}")
     utilities = ZipUtilities()
-    utilities.add_to_zip(folder, f"{out_dir}/{folder}/{output_zip}")
+    utilities.add_to_zip(folder, f"{out_dir}/{output_zip}")
     os.chdir(out_dir)
 
 

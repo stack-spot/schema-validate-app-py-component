@@ -66,3 +66,15 @@ class ManifestEdgeVpcEndpointNotRequired(CLIError):
         logger.error(message)
         self.message = message
         super().__init__(self.message)
+
+class RestAPINotFoundException(CLIError):
+    """
+    Rest API not found.
+
+    Attributes:
+        message -- explanation of the error
+    """
+
+    def __init__(self, message="Rest API not found."):
+        self.message = message
+        super().__init__(self.message)

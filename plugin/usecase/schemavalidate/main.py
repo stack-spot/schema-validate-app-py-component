@@ -21,7 +21,7 @@ class DataSchemaValidateUseCase(DataSchemaValidateInterface):
         create_lambda_package("src/schema_validation", lambda_zip_file)
         bucket_name = kebab(
             f'{cloud_service.account_id}-{schema_validate.name}-gateway-assets')
-        cloud_service.upload_object(f'{get_current_pwd()}/src/schema_validation/{lambda_zip_file}',
+        cloud_service.upload_object(f'{get_current_pwd()}/{lambda_zip_file}',
                                     bucket_name, lambda_zip_file)
         cloud_service.upload_object(f'{get_current_pwd()}/src/layers/avro/avro_layer.zip',
                                     bucket_name, "avro_layer.zip")
@@ -29,7 +29,7 @@ class DataSchemaValidateUseCase(DataSchemaValidateInterface):
                                     bucket_name, "xray_layer.zip")
 
         remove_from_os(
-            f'{get_current_pwd()}/src/schema_validation/{lambda_zip_file}')
+            f'{get_current_pwd()}/{lambda_zip_file}')
 
     def __read_flavors(self, type: str) -> dict:
         flavors = read_yaml(
@@ -46,7 +46,7 @@ class DataSchemaValidateUseCase(DataSchemaValidateInterface):
                 schema_validate.name, schema_validate.registry, schema_validate.region, flavor)
 
         resource = cloud_service.get_api_resource_id(
-            schema_validate.api_id, "stack-analytics", schema_validate.region)
+            schema_validate.api_name, "stack-analytics", schema_validate.region)
         self.cloud.create_api_resource(schema_validate, resource)
 
         return True

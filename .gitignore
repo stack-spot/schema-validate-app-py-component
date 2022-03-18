@@ -27,7 +27,6 @@ coverage.xml
 coverage
 lint
 
-**/*.zip
 **/*.DS_Store
 virtual-env
 .env

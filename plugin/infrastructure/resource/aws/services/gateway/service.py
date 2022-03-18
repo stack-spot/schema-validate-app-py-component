@@ -1,3 +1,4 @@
+from plugin.domain.exceptions import HasFailedEventException, RestAPINotFoundException
 from .interface import ApiGatewayInterface
 from botocore.client import ClientError
 from plugin.utils.logging import logger
@@ -15,16 +16,34 @@ class ApiGatewayService(ApiGatewayInterface):
         self.api_gateway = boto3.client('apigateway', region_name=region)
 
 
-    def get_api_resource_id(self, api_id: str, name: str):
+    def get_rest_api_by_name(self, api_name: str):
         try:
-            response = self.api_gateway.get_resources(restApiId=api_id)
-            resource = {}
-            for r in response["items"]:
-                if r.get("pathPart") == name:
+            res = self.api_gateway.get_rest_apis()
+            for r in res["items"]:
+                if r["name"] == api_name:
+                    logger.info("Rest api %s, found", api_name)
                     return r
-                elif r.get("path") == "/":
-                    resource = r
-            return resource
+            return None
+
+        except ClientError as err:
+            logger.error(
+                    "Unexpected error while get rest apis", err)
+
+
+    def get_api_resource_id(self, api_name: str, name: str):
+        try:
+            rest_api = self.get_rest_api_by_name(api_name)
+            if rest_api is not None:
+                response = self.api_gateway.get_resources(restApiId=rest_api["id"])
+                resource = {}
+                for r in response["items"]:
+                    if r.get("pathPart") == name:
+                        return { **r, "api_id": rest_api["id"] }
+                    elif r.get("path") == "/":
+                        resource = r
+                return { **resource, "api_id": rest_api["id"] }
+            else:
+                raise RestAPINotFoundException(f'Rest API {api_name} not found')
 
 
         except ClientError as err:

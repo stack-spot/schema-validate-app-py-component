@@ -32,12 +32,12 @@ class ApiGateway(cdk.Stack):
         api = apigateway.RestApi.from_rest_api_attributes(
             self,
             "import-rest-api",
-            rest_api_id=schema_validate.api_id,
+            rest_api_id=resource["api_id"],
             root_resource_id=resource["id"]
         )
 
         res = api.root.add_resource("stack-analytics").add_resource("schema-validation").add_resource(
-            "v1.0.0") if resource["path"] == "/" else api.root.add_resource("schema-validation").add_resource("v1.0.0")
+            "v1.0.2") if resource["path"] == "/" else api.root.add_resource("schema-validation").add_resource("v1.0.2")
 
         full_res = res.add_resource("events")\
             .add_resource("{datalake_name}")\
